@@ -1,10 +1,16 @@
 <?php
 include 'ConnectionDb.php';
 
+/**
+ * Class QueryBuilder
+ */
 class QueryBuilder
 {
     public $db;
 
+    /**
+     * QueryBuilder constructor.
+     */
     public function __construct()
     {
         $connect = new ConnectionDb();
@@ -17,7 +23,12 @@ class QueryBuilder
         $this->db = $connect->connect();
     }
 
-    public function showAll($table)
+    /**
+     * @param array $table
+     *
+     * @return array
+     */
+    public function showAll(array $table)
     {
         $query = "SELECT * FROM $table";
         $statement = $this->db->prepare($query);
@@ -25,7 +36,13 @@ class QueryBuilder
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function showOne($table, $id)
+    /**
+     * @param string $table
+     * @param int $id
+     *
+     * @return mixed
+     */
+    public function showOne(string $table, int $id)
     {
         $query = "SELECT * FROM `$table` WHERE `id` = $id";
         $statement = $this->db->prepare($query);
@@ -33,21 +50,37 @@ class QueryBuilder
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function delete($table, $id)
+    /**
+     * @param string $table
+     * @param int $id
+     */
+    public function delete(string $table, int $id)
     {
         $query = "DELETE FROM `$table` WHERE `id` = $id";
         $statement = $this->db->prepare($query);
         $statement->execute();
     }
 
-    public function add($table, $col, $data)
+    /**
+     * @param string $table
+     * @param string $col
+     * @param string $data
+     */
+    public function add(string $table, string $col, string $data)
     {
         $query = "INSERT INTO `$table`($col) VALUES ($data)";
         $statement = $this->db->prepare($query);
         $statement->execute();
     }
 
-    public function getId($table, $col, $value)
+    /**
+     * @param string $table
+     * @param string $col
+     * @param string $value
+     *
+     * @return mixed
+     */
+    public function getId(string $table, string $col, string $value)
     {
         $query = "SELECT id FROM `$table` WHERE `$col` = '$value'";
         $statement = $this->db->prepare($query);
@@ -56,7 +89,13 @@ class QueryBuilder
         return $id;
     }
 
-    public function getName($table, $id)
+    /**
+     * @param string $table
+     * @param int $id
+     *
+     * @return mixed
+     */
+    public function getName(string $table, int $id)
     {
         $query = "SELECT `name` FROM `$table` WHERE `id`=$id";
         $statement = $this->db->prepare($query);
@@ -64,7 +103,12 @@ class QueryBuilder
         return $statement->fetch();
     }
 
-    public function update($table, $updateParam, $id)
+    /**
+     * @param string $table
+     * @param string $updateParam
+     * @param int $id
+     */
+    public function update(string $table, string $updateParam, int $id)
     {
         $query = "UPDATE `$table` SET $updateParam WHERE `id`='$id'";
         $statement = $this->db->prepare($query);
