@@ -24,11 +24,11 @@ class QueryBuilder
     }
 
     /**
-     * @param array $table
+     * @param string $table
      *
      * @return array
      */
-    public function showAll(array $table)
+    public function showAll(string $table)
     {
         $query = "SELECT * FROM $table";
         $statement = $this->db->prepare($query);
