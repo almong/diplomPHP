@@ -38,9 +38,9 @@ class ParserQuery
      */
     public function getCol()
     {
-        if ($this->name != null) {return "`name`";}
-        if ($this->login != null) {return "`login`, `password`";}
-        if ($this->question != null) { return "`category_id`, `question`, `user_id`, `status`";}
+        if ($this->name) {return "`name`";}
+        if ($this->login) {return "`login`, `password`";}
+        if ($this->question) { return "`category_id`, `question`, `user_id`, `status`";}
     }
 
     /**
@@ -48,9 +48,9 @@ class ParserQuery
      */
     public function getData()
     {
-        if ($this->name != null) {return "'$this->name'";}
-        if ($this->login != null) {return "'$this->login', '$this->password'";}
-        if ($this->question != null) {return "'$this->category_id', '$this->question', '$this->user_id'";}
+        if ($this->name) {return "'$this->name'";}
+        if ($this->login) {return "'$this->login', '$this->password'";}
+        if ($this->question) {return "'$this->category_id', '$this->question', '$this->user_id'";}
     }
 
     /**
