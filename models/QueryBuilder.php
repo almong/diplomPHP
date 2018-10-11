@@ -44,9 +44,9 @@ class QueryBuilder
      */
     public function showOne(string $table, int $id)
     {
-        $query = "SELECT * FROM `$table` WHERE `id` = $id";
+        $query = "SELECT * FROM `$table` WHERE `id` = :id";
         $statement = $this->db->prepare($query);
-        $statement->execute();
+        $statement->execute(['id' => $id]);
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -56,9 +56,9 @@ class QueryBuilder
      */
     public function delete(string $table, int $id)
     {
-        $query = "DELETE FROM `$table` WHERE `id` = $id";
+        $query = "DELETE FROM `$table` WHERE `id` = :id";
         $statement = $this->db->prepare($query);
-        $statement->execute();
+        $statement->execute(['id' => $id]);
     }
 
     /**
@@ -68,9 +68,10 @@ class QueryBuilder
      */
     public function add(string $table, string $col, string $data)
     {
-        $query = "INSERT INTO `$table`($col) VALUES ($data)";
+        $data = htmlspecialchars($data);
+        $query = "INSERT INTO `$table`($col) VALUES (:data)";
         $statement = $this->db->prepare($query);
-        $statement->execute();
+        $statement->execute(['data' => $data]);
     }
 
     /**
@@ -82,9 +83,10 @@ class QueryBuilder
      */
     public function getId(string $table, string $col, string $value)
     {
-        $query = "SELECT id FROM `$table` WHERE `$col` = '$value'";
+        $value = htmlspecialchars($value);
+        $query = "SELECT id FROM `$table` WHERE `$col` = :value";
         $statement = $this->db->prepare($query);
-        $statement->execute();
+        $statement->execute(['value' => $value]);
         $id = $statement->fetch()[0];
         return $id;
     }
@@ -97,9 +99,9 @@ class QueryBuilder
      */
     public function getName(string $table, int $id)
     {
-        $query = "SELECT `name` FROM `$table` WHERE `id`=$id";
+        $query = "SELECT `name` FROM `$table` WHERE `id`=:id";
         $statement = $this->db->prepare($query);
-        $statement->execute();
+        $statement->execute(['id' => $id]);
         return $statement->fetch();
     }
 
@@ -110,9 +112,10 @@ class QueryBuilder
      */
     public function update(string $table, string $updateParam, int $id)
     {
-        $query = "UPDATE `$table` SET $updateParam WHERE `id`='$id'";
+        $updateParam = htmlspecialchars($updateParam);
+        $query = "UPDATE `$table` SET :updateParam WHERE `id`=:id";
         $statement = $this->db->prepare($query);
-        $statement->execute();
+        $statement->execute(['updateParam' => $updateParam, 'id' => $id]);
     }
 
 }
