@@ -7,17 +7,17 @@ include 'header.php';
         <a type="button" class="btn btn-success">Задать вопрос</a>
 
 	<ul class="cd-faq-categories">
-        <?php foreach ($categorys as $category):
-            if ($category['id'] == 1) {?>
+        <?php foreach ($categories as $category): ?>
+            <?php if ($category['id'] == 1) : ?>
                 <li><a class="selected" href="#<?= $category['name']?>"><?= ucfirst($category['name'])?></a></li>
-        <?php } else {?>
+        <?php else: ?>
     		<li><a href="#<?= $category['name']?>"><?= ucfirst($category['name'])?></a></li>
-        <?php } endforeach;?>
+        <?php endif; endforeach;?>
 	</ul> <!-- cd-faq-categories -->
 
 	<div class="cd-faq-items">
         <a class="btn btn-outline-info" href="question" role="button">Задать вопрос</a>
-        <?php foreach ($categorys as $category):?>
+        <?php foreach ($categories as $category):?>
                 <ul id="<?= $category['name']?>" class="cd-faq-group">
                     <li class="cd-faq-title"><h2><?= ucfirst($category['name'])?></h2></li>
             <?php foreach ($questions as $question):
@@ -28,8 +28,7 @@ include 'header.php';
                          <p><?= $question['answer']?></p>
                         </div> <!-- cd-faq-content -->
                     </li>
-            <?php   endif;
-                endforeach;?>
+            <?php endif; endforeach;?>
                 </ul>
             <?php endforeach;?>
 	</div> <!-- cd-faq-items -->
