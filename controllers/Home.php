@@ -1,5 +1,5 @@
 <?php
-include '../models/QueryBuilder.php';
+include '../function/autoloadClass.php';
 
 $query = new QueryBuilder();
 

@@ -1,7 +1,7 @@
 <?php
 
-include '../models/ParserQuery.php';
-include "../models/QueryBuilder.php";
+include "../function/autoloadClass.php";
+
 /**
  * @param string $queryString
  *

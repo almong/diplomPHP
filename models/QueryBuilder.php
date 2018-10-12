@@ -1,5 +1,6 @@
 <?php
-include 'ConnectionDb.php';
+
+use ConnectionDb;
 
 /**
  * Class QueryBuilder
