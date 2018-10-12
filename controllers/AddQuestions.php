@@ -10,7 +10,7 @@ if (!empty($_POST['name'] && !empty($_POST['question']))){
     header('Location: /');
 }
 
-$categorys = $query->showAll('category');
+$categories = $query->showAll('category');
 
 include '../views/question.php';
 
