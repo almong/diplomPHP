@@ -136,4 +136,43 @@ class QueryBuilder
         $statement = $this->db->prepare($query);
         $statement->execute($param);
     }
+
+    /**
+     * @param string $id
+     *
+     * @return mixed
+     */
+    public function getQuestion(string $id)
+    {
+        $query = "SELECT count(*) FROM `question` WHERE `category_id`=:id";
+        $statement = $this->db->prepare($query);
+        $statement->execute(['id' => $id]);
+        return $statement->fetch();
+    }
+
+    /**
+     * @param string $id
+     *
+     * @return mixed
+     */
+    public function getAnswer(string $id)
+    {
+        $query = "SELECT count(*) FROM `question` WHERE `category_id`=:id AND `answer` IS NULL";
+        $statement = $this->db->prepare($query);
+        $statement->execute(['id' => $id]);
+        return $statement->fetch();
+    }
+
+    /**
+     * @param string $id
+     *
+     * @return mixed
+     */
+    public function getPublic(string $id)
+    {
+        $query = "SELECT count(*) FROM `question` WHERE `category_id`=:id AND `status`='2'";
+        $statement = $this->db->prepare($query);
+        $statement->execute(['id' => $id]);
+        return $statement->fetch();
+    }
 }

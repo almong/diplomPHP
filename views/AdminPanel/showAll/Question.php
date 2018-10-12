@@ -1,5 +1,4 @@
-<?php
-foreach ($values as $row) {?>
+<?php foreach ($values as $row) :?>
     <tr>
         <th scope="row"><?= $row['id']?></th>
         <td><?= $obj->getName('category',$row['category_id'])['name']?></td>
@@ -13,4 +12,4 @@ foreach ($values as $row) {?>
             <a href="/Question/delete?id=<?= $row['id']?>" class="badge badge-danger">Delete</a>
         </td>
     </tr>
-<?php } ?>
+<?php endforeach; ?>

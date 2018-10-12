@@ -3,6 +3,11 @@
     <tr>
         <th scope="col">id</th>
         <th scope="col">Name</th>
+        <?php if ($action == 'showAll') :?>
+            <th scope="col">Вопросов</th>
+            <th scope="col">Опубликованно</th>
+            <th scope="col">Без ответа</th>
+        <?php endif; ?>
         <th scope="col"></th>
     </tr>
     </thead>
