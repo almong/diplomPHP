@@ -1,6 +1,6 @@
 <?php
-include '../models/QueryBuilder.php';
-include '../models/AddQuestion.php';
+
+include '../function/autoloadClass.php';
 
 $query = new QueryBuilder();
 

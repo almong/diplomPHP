@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../models/Admin.php';
+include '../function/autoloadClass.php';
 
 if (!empty($_SESSION['login'])) {
     include '../views/admin.php';

@@ -1,5 +1,6 @@
 <?php
-include 'QueryBuilder.php';
+
+use QueryBuilder;
 
 /**
  * Class Category
