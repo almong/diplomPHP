@@ -4,7 +4,7 @@ include 'header.php';
 
 <section class="cd-faq">
 
-        <a type="button" class="btn btn-success">Задать вопрос</a>
+<!--        <a type="button" class="btn btn-success">Задать вопрос</a>-->
 
 	<ul class="cd-faq-categories">
         <?php foreach ($categories as $category): ?>

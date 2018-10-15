@@ -1,7 +1,5 @@
 <?php
 
-use ConnectionDb;
-
 /**
  * Class QueryBuilder
  */
