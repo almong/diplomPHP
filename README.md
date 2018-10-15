@@ -1,6 +1,6 @@
 # Установка приложения
-##Настройка сервера
-###Apache
+Настройка сервера
+Apache
 Создать файл public/.htaccess :
 ```
 Options +FollowSymLinks -Indexes
@@ -13,7 +13,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
 ```
-###Nginx
+Nginx
 ```
 location / {
     try_files $uri $uri/ /index.php?$query_string;
